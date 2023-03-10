@@ -577,7 +577,8 @@ impl Command {
     {
         self.try_get_matches_from_mut(itr).unwrap_or_else(|e| {
             drop(self);
-            e.exit()
+            let _ = e.print();
+            ArgMatches::default()
         })
     }
 
